@@ -64,6 +64,7 @@ Web Awesome follows <a href="https://semver.org/" class="appearance-plain">Seman
 - Fixed a bug in the layout utilities (`wa-stack`, `wa-cluster`, etc.) that stopped native `<dialog>` and popover children from centering [issue:2777] [pr:2847]
 - Fixed a bug in `<wa-dialog>` and `<wa-drawer>` where the internal `<dialog>` element had no accessible name [issue:2785] [pr:2846]
 - Fixed a bug in `<wa-dialog>` and `<wa-drawer>` where clicking its own scrollbar closed it when `light-dismiss` was enabled [issue:2778] [pr:2851]
+- Fixed a bug in `<wa-page>` where backgrounds set on the `banner`, `header`, and `subheader` parts were covered by slotted content [issue:2827] [pr:2848]
 
 :::
 
@@ -75,6 +76,7 @@ Web Awesome follows <a href="https://semver.org/" class="appearance-plain">Seman
   - Added a `your-design-system.md` reference for building and extending a project design system on Web Awesome, including a `DESIGN.md` template
   - Updated the `webawesome` skill's `<wa-page>` guidance to match the design skill and the component's actual behavior
   - Added missing components to the `choosing-components.md` decision tree and corrected the Pro component list
+- Changed `<wa-page>` so only the `banner`, `header`, and `subheader` parts paint a background. See [Backgrounds](/docs/components/page#backgrounds) to keep other sections opaque [issue:2827] [pr:2848]
 
 :::
 
