@@ -58,6 +58,7 @@ Web Awesome follows <a href="https://semver.org/" class="appearance-plain">Seman
 - Fixed a bug in `<wa-combobox>` where the option position and option count announcements weren't localized
 - Fixed a bug in `<wa-page>` where the navigation toggle's icon loaded from the default icon library instead of the system library [issue:2820]
 - Fixed a bug in `<wa-page>` where `disable-navigation-toggle` was ignored when navigation content was present [issue:2774]
+- Fixed a bug in `<wa-date-input>` and `<wa-time-input>` where the clear and expand buttons used a different hover color than `<wa-input>` and `<wa-select>` [issue:2834]
 
 :::
 
