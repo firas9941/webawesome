@@ -143,10 +143,15 @@ export default class WaTooltip extends WebAwesomeElement {
       // The events that re-arm the tooltip after a light dismiss can be missed while disconnected
       this.dismissedByPress = false;
 
-      // TODO: This is a hack that I need to revisit [Konnor]
+      // TODO: This is a hack with SSR needing to close + reopen to trigger floating UI that I need to revisit [Konnor]
       if (this.open) {
         this.open = false;
         this.updateComplete.then(() => {
+          // don't try to open disabled tooltips.
+          if (this.disabled) {
+            return;
+          }
+
           this.open = true;
         });
       }
@@ -349,6 +354,7 @@ export default class WaTooltip extends WebAwesomeElement {
   async handleOpenChange() {
     if (this.open) {
       if (this.disabled) {
+        this.open = false;
         return;
       }
 
@@ -463,7 +469,7 @@ export default class WaTooltip extends WebAwesomeElement {
 
   /** Shows the tooltip. */
   async show() {
-    if (this.open) {
+    if (this.open || this.disabled) {
       return undefined;
     }
 
