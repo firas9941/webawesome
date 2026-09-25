@@ -694,20 +694,20 @@ export default class WaDropdown extends WebAwesomeElement {
 
     // Calculate these up front since this event cant fire a lot.
     const composedPath = event.composedPath();
-    const submenuItemHovered = currentSubmenuItem.matches(':hover');
-    const submenuElementHovered = Boolean(currentSubmenuItem.submenuElement?.matches(':hover'));
+    const submenuItemHovered = () => currentSubmenuItem.matches(':hover');
+    const submenuElementHovered = () => Boolean(currentSubmenuItem.submenuElement?.matches(':hover'));
 
-    const isOverItem = submenuItemHovered || !!composedPath.find(el => el === currentSubmenuItem);
+    const isOverItem = submenuItemHovered() || !!composedPath.find(el => el === currentSubmenuItem);
 
     const isOverSubmenu =
-      submenuElementHovered ||
+      submenuElementHovered() ||
       !!composedPath.find(
         el => el instanceof HTMLElement && el.closest('[part="submenu"]') === currentSubmenuItem.submenuElement,
       );
 
     if (!isOverItem && !isOverSubmenu) {
       setTimeout(() => {
-        if (!submenuItemHovered && !submenuElementHovered) {
+        if (!submenuItemHovered() && !submenuElementHovered()) {
           currentSubmenuItem.submenuOpen = false;
         }
       }, 100);
